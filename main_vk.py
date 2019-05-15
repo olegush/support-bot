@@ -11,10 +11,10 @@ from vk_api.exceptions import SecurityCheck, ApiError, ApiHttpError
 from tg_logging import create_logger
 
 load_dotenv()
-TOKEN_TG = os.getenv('TOKEN_TG')
-CHAT_ID_TG_ADMIN = os.getenv('CHAT_ID_TG_ADMIN')
-TOKEN_VK = os.getenv('TOKEN_VK')
-TOKEN_DF = os.getenv('TOKEN_DF')
+TOKEN_TG = os.environ['TOKEN_TG']
+CHAT_ID_TG_ADMIN = os.environ['CHAT_ID_TG_ADMIN']
+TOKEN_VK = os.environ['TOKEN_VK']
+TOKEN_DF = os.environ['TOKEN_DF']
 URL_DF = 'https://api.dialogflow.com/v1/query'
 FALLBACK = 'do_not_understand'
 
