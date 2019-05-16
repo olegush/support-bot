@@ -49,9 +49,14 @@ Run both **main_tg.py** and **main_vk.py** files and test it with questions from
 $ python main_tg.py
 ```
 
+![TG screenshot](screenshots/tg.png)
+
+
 ```bash
 $ python main_vk.py
 ```
+
+![VK screenshot](screenshots/vk.png)
 
 ## How to deploy
 
@@ -59,7 +64,9 @@ For example, you can deploy apps on [Heroku](https://heroku.com), with
 GitHub integration.
 
 1. Create two apps on Heroku with GitHub deployment method. Do not forget
-about **requirements.txt** and **Procfile** (**Procfile**, obviously will be different for every app, although Git repository can be only one).  Don't touch "Enable Automatic Deploy" button. Replace in files **main_tg.py** and **main_vk.py** lines looks like:
+about **requirements.txt** and **Procfile** which, obviously will be different for every app. , although Git repository can be only one.  Don't enable automatic deploy if you use one repository for two apps. For real project it's better to separate bots.
+
+Replace in files **main_tg.py** and **main_vk.py** lines looks like:
 
  ```python
 VAR = os.getenv('VAR')
