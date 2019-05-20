@@ -26,17 +26,6 @@ TOKEN_DF_DEV=token_dialog_flow_development
 TOKEN_VK=token_vkontakte
 
 ```
-and replace in files **main_tg.py** and **main_vk.py** lines looks like:
-
-```python
-VAR = os.environ['VAR']
-```
-
-with
-
-```python
-VAR = os.getenv('VAR')
-```
 
 6. Add new intents to your Dialog Flow project from **question.json**. The **intents.py** script can helps you with it.
 
@@ -63,20 +52,7 @@ $ python main_vk.py
 For example, you can deploy apps on [Heroku](https://heroku.com), with
 GitHub integration.
 
-1. Create two apps on Heroku with GitHub deployment method. Do not forget
-about **requirements.txt** and **Procfile** which, obviously will be different for every app. , although Git repository can be only one.  Don't enable automatic deploy if you use one repository for two apps. For real project it's better to separate bots.
-
-Replace in files **main_tg.py** and **main_vk.py** lines looks like:
-
- ```python
-VAR = os.getenv('VAR')
- ```
-
- with
-
- ```python
- VAR = os.environ['VAR']
-  ```
+1. Create two apps on Heroku with GitHub deployment method. 
 
 2. Add necessary environment variables to Settings > Config Vars section of every app.
 

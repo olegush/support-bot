@@ -1,8 +1,6 @@
 import logging
 
-from telegram import Bot
-
-def create_logger(token, chat_id):
+def create_logger(bot, chat_id):
     """ Sends formatted logs to Telegram Bot."""
 
     class LoggerTelegramBot(logging.Handler):
@@ -13,8 +11,6 @@ def create_logger(token, chat_id):
                 text=log_entry,
                 parse_mode='HTML',
                 disable_web_page_preview=True)
-
-    bot = Bot(token=token)
 
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)

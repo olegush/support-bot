@@ -5,21 +5,17 @@ from dotenv import load_dotenv
 import requests
 
 
-load_dotenv()
-TOKEN_DF_DEV = os.getenv('TOKEN_DF_DEV')
-URL_DF = 'https://api.dialogflow.com/v1/intents'
-QUESTIONS_PATH = 'questions.json'
-
-
 def add_intent(intent):
+    token = os.getenv('TOKEN_DF_DEV')
+    url = 'https://api.dialogflow.com/v1/intents'
     headers = {
-        'Authorization': 'Bearer ' + TOKEN_DF_DEV,
+        'Authorization': 'Bearer ' + token,
         'Content-Type': 'application/json'
     }
-    resp = requests.post(URL_DF, headers=headers, data=json.dumps(intent))
+    resp = requests.post(url, headers=headers, data=json.dumps(intent))
 
 
-def get_questions(filepath):
+def get_intent(filepath):
     with open(filepath) as file:
         data = json.loads(file.read())
     intent = {}
@@ -38,8 +34,10 @@ def get_questions(filepath):
                     'text': question
                 }]
             })
-        add_intent(intent)
+        yield intent
 
 
 if __name__ == '__main__':
-    get_questions(QUESTIONS_PATH)
+    load_dotenv()
+    for intent in get_intent('questions.json'):
+        add_intent(intent)
